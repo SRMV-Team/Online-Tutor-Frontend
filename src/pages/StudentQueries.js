@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
+import API_BASE_URL from '../../../tuition-backend/config/api';
 import '../styles/teacherQueries.css';
 import {
   FaSearch,
@@ -46,8 +47,8 @@ const StudentQueries = () => {
         sortOrder
       });
 
-      const response = await axios.get(`http://localhost:5000/api/queries?${queryParams}`);
-      
+      const response = await axios.get(`${API_BASE_URL}/api/queries?${queryParams}`);
+
       if (response.status === 200) {
         setQueries(response.data.queries);
         setPagination(response.data.pagination);
@@ -93,7 +94,7 @@ const StudentQueries = () => {
   // Fetch subjects for filter
   const fetchSubjects = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/subjects');
+      const response = await axios.get(`${API_BASE_URL}/api/subjects`);
       if (response.status === 200) {
         const subjectNames = response.data.subjects.map(subject => subject.name);
         setSubjects([...new Set(subjectNames)]);
@@ -121,7 +122,7 @@ const StudentQueries = () => {
 
     setReplyingTo(queryId);
     try {
-      const response = await axios.put(`http://localhost:5000/api/queries/${queryId}/reply`, {
+      const response = await axios.put(`${API_BASE_URL}/api/queries/${queryId}/reply`, {
         reply: replies[queryId],
         teacherId: currentTeacherId,
         status: 'Answered'
@@ -153,7 +154,7 @@ const StudentQueries = () => {
 
   const handleStatusUpdate = async (queryId, newStatus) => {
     try {
-      await axios.put(`http://localhost:5000/api/queries/${queryId}/status`, {
+      await axios.put(`${API_BASE_URL}/api/queries/${queryId}/status`, {
         status: newStatus
       });
       

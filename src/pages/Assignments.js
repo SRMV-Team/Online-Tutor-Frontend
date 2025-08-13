@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useEffect, useCallback } from 'react';
+import API_BASE_URL from '../../../tuition-backend/config/api';
 import '../styles/assignments.css';
 
 const Assignments = () => {
@@ -36,7 +37,7 @@ const Assignments = () => {
   const fetchAssignments = useCallback(async () => {
   try {
     setLoading(true);
-    const response = await fetch(`http://localhost:5000/api/assignments/student/${studentId}?class=${studentClass}`);
+    const response = await fetch(`${API_BASE_URL}/api/assignments/student/${studentId}?class=${studentClass}`);
     const data = await response.json();
     
     if (data.success) {
@@ -125,7 +126,7 @@ useEffect(() => {
       formData.append('studentId', studentId);
       formData.append('studentName', studentName);
 
-      const response = await fetch(`http://localhost:5000/api/assignments/${assignmentId}/submit`, {
+      const response = await fetch(`${API_BASE_URL}/api/assignments/${assignmentId}/submit`, {
         method: 'POST',
         body: formData
       });

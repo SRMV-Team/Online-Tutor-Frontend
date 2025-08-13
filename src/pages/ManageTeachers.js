@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import axios from 'axios';
-import '../styles/manageTeachers.css';
+import API_BASE_URL from '../../../tuition-backend/config/api';
 import TeacherAssignmentModal from '../components/TeacherAssignmentModal';
+import '../styles/manageTeachers.css';
 import { 
   FaChalkboardTeacher, 
   FaSearch, 
@@ -85,8 +86,8 @@ const ManageTeachers = () => {
         ...(filterStatus !== 'All' && { status: filterStatus })
       });
 
-      const response = await axios.get(`http://localhost:5000/api/admin/teachers?${queryParams}`);
-      
+      const response = await axios.get(`${API_BASE_URL}/api/admin/teachers?${queryParams}`);
+
       if (response.status === 200) {
         setTeachers(response.data.teachers);
         setPagination(response.data.pagination);
@@ -188,8 +189,8 @@ const ManageTeachers = () => {
 
       const isEdit = modalType === 'edit';
       const url = isEdit 
-        ? `http://localhost:5000/api/admin/teachers/${selectedTeacher._id}`
-        : 'http://localhost:5000/api/admin/teachers';
+        ? `${API_BASE_URL}/api/admin/teachers/${selectedTeacher._id}`
+        : `${API_BASE_URL}/api/admin/teachers`;
       
       const method = isEdit ? 'PUT' : 'POST';
 
@@ -213,7 +214,7 @@ const ManageTeachers = () => {
   // Handle approval
   const handleApproval = async (id, status) => {
     try {
-      const response = await axios.put(`http://localhost:5000/api/admin/teachers/${id}/status`, { status });
+      const response = await axios.put(`${API_BASE_URL}/api/admin/teachers/${id}/status`, { status });
       
       if (status === true) {
         // Find the approved teacher
@@ -256,7 +257,7 @@ const ManageTeachers = () => {
     }
 
     try {
-      await axios.delete(`http://localhost:5000/api/admin/teachers/${id}`);
+      await axios.delete(`${API_BASE_URL}/api/admin/teachers/${id}`);
       alert('Teacher deleted successfully');
       fetchTeachers();
     } catch (error) {
@@ -268,7 +269,7 @@ const ManageTeachers = () => {
   // Toggle active status
   const toggleStatus = async (id) => {
     try {
-      const response = await axios.patch(`http://localhost:5000/api/admin/teachers/${id}/toggle-status`);
+      const response = await axios.patch(`${API_BASE_URL}/api/admin/teachers/${id}/toggle-status`);
       alert(response.data.message);
       fetchTeachers();
     } catch (error) {

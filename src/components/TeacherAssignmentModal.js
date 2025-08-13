@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import API_BASE_URL from '../../../tuition-backend/config/api';
 import '../styles/teacherAssignmentModal.css';
 import { 
   FaTimes, 
@@ -69,7 +70,7 @@ const TeacherAssignmentModal = ({
     try {
       // First, test server connectivity
       console.log('Testing server connectivity...');
-      await axios.get('http://localhost:5000/', { timeout: 5000 });
+      await axios.get(`${API_BASE_URL}/`, { timeout: 5000 });
       console.log('Server is running!');
 
       // Get token from various possible locations
@@ -94,7 +95,7 @@ const TeacherAssignmentModal = ({
       // Test basic admin route first
       try {
         console.log('Testing admin route access...');
-        const testResponse = await axios.get('http://localhost:5000/api/admin/teachers?limit=1', {
+        const testResponse = await axios.get(`${API_BASE_URL}/api/admin/teachers?limit=1`, {
           headers,
           timeout: 10000
         });
@@ -110,7 +111,7 @@ const TeacherAssignmentModal = ({
       // Fetch available classes
       try {
         console.log('Fetching classes from /api/admin/available-classes...');
-        const classesResponse = await axios.get('http://localhost:5000/api/admin/available-classes', {
+        const classesResponse = await axios.get(`${API_BASE_URL}/api/admin/available-classes`, {
           headers,
           timeout: 10000
         });
@@ -131,7 +132,7 @@ const TeacherAssignmentModal = ({
         // Try alternative routes
         try {
           console.log('Trying alternative student route for classes...');
-          const studentResponse = await axios.get('http://localhost:5000/api/student', {
+          const studentResponse = await axios.get(`${API_BASE_URL}/api/student`, {
             headers,
             timeout: 10000
           });
@@ -159,7 +160,7 @@ const TeacherAssignmentModal = ({
       // Fetch available subjects
       try {
         console.log('Fetching subjects from /api/subjects...');
-        const subjectsResponse = await axios.get('http://localhost:5000/api/subjects', {
+        const subjectsResponse = await axios.get(`${API_BASE_URL}/api/subjects`, {
           headers,
           timeout: 10000
         });
@@ -262,8 +263,8 @@ const TeacherAssignmentModal = ({
       }
 
       const endpoint = mode === 'edit' 
-        ? `http://localhost:5000/api/admin/teachers/${teacher._id}/update-assignment`
-        : `http://localhost:5000/api/admin/teachers/${teacher._id}/assign`;
+        ? `${API_BASE_URL}/api/admin/teachers/${teacher._id}/update-assignment`
+        : `${API_BASE_URL}/api/admin/teachers/${teacher._id}/assign`;
       
       console.log('Submitting assignment:', { endpoint, formData, headers });
       console.log('Assignment Data being sent:', JSON.stringify(formData, null, 2));

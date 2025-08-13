@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import API_BASE_URL from '../../../tuition-backend/config/api';
 import '../styles/studentQueries.css';
 
 const RaiseQuery = () => {
@@ -40,7 +41,7 @@ const RaiseQuery = () => {
       setFetchingSubjects(true);
       setError('');
       
-      const response = await axios.get('http://localhost:5000/api/subjects');
+      const response = await axios.get(`${API_BASE_URL}/api/subjects`);
       
       if (response.status === 200 && response.data.subjects) {
         const subjectNames = response.data.subjects.map(subject => subject.name);
@@ -70,9 +71,9 @@ const RaiseQuery = () => {
     try {
       setFetchingQueries(true);
       setError('');
-      
-      const response = await axios.get(`http://localhost:5000/api/queries/student/${currentStudentId}`);
-      
+
+      const response = await axios.get(`${API_BASE_URL}/api/queries/student/${currentStudentId}`);
+
       if (response.status === 200) {
         setQueries(response.data.queries || []);
       } else {
@@ -126,8 +127,8 @@ const RaiseQuery = () => {
         priority
       };
 
-      const response = await axios.post('http://localhost:5000/api/queries', newQuery);
-      
+      const response = await axios.post(`${API_BASE_URL}/api/queries`, newQuery);
+
       if (response.status === 201) {
         // Reset form
         setSubject('');

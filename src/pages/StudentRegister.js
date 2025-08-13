@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import API_BASE_URL from '../../../tuition-backend/config/api';
 import '../styles/register.css';
 
 const StudentRegister = () => {
@@ -50,7 +51,7 @@ const StudentRegister = () => {
   }
 
   try {
-    const response = await fetch("http://localhost:5000/api/student/register", {
+    const response = await fetch(`${API_BASE_URL}/api/student/register`, {
       method: "POST",
       body: formData
     });

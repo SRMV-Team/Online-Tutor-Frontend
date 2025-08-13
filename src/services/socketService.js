@@ -1,4 +1,5 @@
 import io from 'socket.io-client';
+import API_BASE_URL from '../../../tuition-backend/config/api';
 
 class SocketService {
   constructor() {
@@ -7,8 +8,8 @@ class SocketService {
   }
 
   connect(userData) {
-    this.socket = io('http://localhost:5000');
-    
+    this.socket = io(`${API_BASE_URL}`);
+
     this.socket.on('connect', () => {
       console.log('Connected to server');
       this.socket.emit('join', userData);

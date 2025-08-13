@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import API_BASE_URL from '../../../tuition-backend/config/api';
 import '../styles/manageStudents.css';
 import { 
   FaUsers, 
@@ -125,7 +126,7 @@ const ManageStudents = () => {
   const fetchStudents = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/api/student');
+      const response = await fetch(`${API_BASE_URL}/api/student`);
       const contentType = response.headers.get("content-type");
       
       if (!contentType || !contentType.includes("application/json")) {
@@ -211,8 +212,8 @@ const ManageStudents = () => {
     
     try {
       const url = modalType === 'add' 
-        ? 'http://localhost:5000/api/student/register'
-        : `http://localhost:5000/api/student/${selectedStudent._id}`;
+        ? `${API_BASE_URL}/api/student/register`
+        : `${API_BASE_URL}/api/student/${selectedStudent._id}`;
       
       const method = modalType === 'add' ? 'POST' : 'PUT';
       
@@ -270,8 +271,8 @@ const ManageStudents = () => {
     try {
       console.log('Attempting to delete student with ID:', studentId);
       console.log('Student details:', studentToDelete);
-      
-      const response = await fetch(`http://localhost:5000/api/student/${studentId}`, {
+
+      const response = await fetch(`${API_BASE_URL}/api/student/${studentId}`, {
         method: 'DELETE'
       });
 
@@ -305,7 +306,7 @@ const ManageStudents = () => {
   // Approve or reject a student
   const handleApproval = async (id, status) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/student/${id}/approve`, {
+      const response = await fetch(`${API_BASE_URL}/api/student/${id}/approve`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status })
@@ -333,7 +334,7 @@ const ManageStudents = () => {
   // Toggle payment status
   const togglePayment = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/student/${id}/payment`, {
+      const response = await fetch(`${API_BASE_URL}/api/student/${id}/payment`, {
         method: 'PUT'
       });
 

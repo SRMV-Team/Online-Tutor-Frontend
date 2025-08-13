@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import API_BASE_URL from '../../../tuition-backend/config/api';
 import '../styles/login.css';
 
 const Login = () => {
@@ -28,7 +29,7 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const endpoint = `http://localhost:5000/api/${role}/login`;
+      const endpoint = `${API_BASE_URL}/api/${role}/login`;
       const response = await axios.post(endpoint, formData);
       
       console.log('Login response:', response.data); // Debug log

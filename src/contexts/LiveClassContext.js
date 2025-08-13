@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
 import socketService from '../services/socketService';
+import API_BASE_URL from '../../../tuition-backend/config/api';
 
 const LiveClassContext = createContext();
 
@@ -94,7 +95,7 @@ export const LiveClassProvider = ({ children }) => {
 
   const fetchLiveClasses = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/live-classes');
+      const response = await fetch(`${API_BASE_URL}/api/live-classes`);
       const data = await response.json();
       if (Array.isArray(data)) {
         setLiveClasses(data);
@@ -120,7 +121,7 @@ export const LiveClassProvider = ({ children }) => {
       }
 
       // Call REST API first
-      const response = await fetch('http://localhost:5000/api/live-classes/start', {
+      const response = await fetch(`${API_BASE_URL}/api/live-classes/start`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -146,7 +147,7 @@ export const LiveClassProvider = ({ children }) => {
   const endLiveClass = async (classId) => {
     try {
       // Call REST API first
-      const response = await fetch(`http://localhost:5000/api/live-classes/end/${classId}`, {
+      const response = await fetch(`${API_BASE_URL}/api/live-classes/end/${classId}`, {
         method: 'DELETE',
       });
 

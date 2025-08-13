@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
+import API_BASE_URL from '../../../tuition-backend/config/api';
 import '../styles/assignments.css';
 
 const TeacherAssignments = () => {
@@ -48,7 +49,7 @@ const TeacherAssignments = () => {
     const fetchAssignments = async () => {
         try {
             setLoading(true);
-            const response = await fetch(`http://localhost:5000/api/assignments?teacherId=${teacherId}`);
+            const response = await fetch(`${API_BASE_URL}/api/assignments?teacherId=${teacherId}`);
             const data = await response.json();
             
             if (data.success) {
@@ -68,7 +69,7 @@ const TeacherAssignments = () => {
     // Fetch statistics
     const fetchStats = async () => {
         try {
-            const response = await fetch(`http://localhost:5000/api/assignments/stats?teacherId=${teacherId}`);
+            const response = await fetch(`${API_BASE_URL}/api/assignments/stats?teacherId=${teacherId}`);
             const data = await response.json();
             
             if (data.success) {
@@ -132,7 +133,7 @@ const TeacherAssignments = () => {
                 class: teacherClass
             };
 
-            const response = await fetch('http://localhost:5000/api/assignments', {
+            const response = await fetch(`${API_BASE_URL}/api/assignments`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -168,8 +169,8 @@ const TeacherAssignments = () => {
 
     const handleDownloadSubmission = async (assignment, submission) => {
         try {
-            const response = await fetch(`http://localhost:5000/api/assignments/${assignment._id}/download/${submission._id}`);
-            
+            const response = await fetch(`${API_BASE_URL}/api/assignments/${assignment._id}/download/${submission._id}`);
+
             if (response.ok) {
                 const blob = await response.blob();
                 const url = window.URL.createObjectURL(blob);

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import API_BASE_URL from '../../../tuition-backend/config/api';
 import '../styles/teacherDashboard.css';
 import { 
   FaTasks, 
@@ -58,8 +59,8 @@ const TeacherDashboard = () => {
         throw new Error('Teacher ID not found. Please login again.');
       }
 
-      const response = await fetch(`http://localhost:5000/api/teacher/dashboard/stats/${teacherId}`);
-      
+      const response = await fetch(`${API_BASE_URL}/api/teacher/dashboard/stats/${teacherId}`);
+
       if (!response.ok) {
         throw new Error('Failed to fetch dashboard data');
       }

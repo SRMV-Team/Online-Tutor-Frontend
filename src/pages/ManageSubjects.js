@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import API_BASE_URL from '../../../tuition-backend/config/api';
 import '../styles/manageSubjects.css';
 import { 
   FaPlus, 
@@ -79,7 +80,7 @@ const ManageSubjects = () => {
         ...(searchTerm && { search: searchTerm })
       });
 
-      const response = await fetch(`http://localhost:5000/api/subjects?${queryParams}`);
+      const response = await fetch(`${API_BASE_URL}/api/subjects?${queryParams}`);
       const data = await response.json();
       
       if (response.ok) {
@@ -182,8 +183,8 @@ const ManageSubjects = () => {
 
       const isEdit = modalType === 'edit';
       const url = isEdit 
-        ? `http://localhost:5000/api/subjects/${selectedSubject._id}`
-        : 'http://localhost:5000/api/subjects';
+        ? `${API_BASE_URL}/api/subjects/${selectedSubject._id}`
+        : `${API_BASE_URL}/api/subjects`;
       
       const method = isEdit ? 'PUT' : 'POST';
 
@@ -222,7 +223,7 @@ const ManageSubjects = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/api/subjects/${subjectId}`, {
+      const response = await fetch(`${API_BASE_URL}/api/subjects/${subjectId}`, {
         method: 'DELETE'
       });
 
@@ -243,7 +244,7 @@ const ManageSubjects = () => {
   // Toggle subject status
   const toggleStatus = async (subjectId) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/subjects/${subjectId}/toggle-status`, {
+      const response = await fetch(`${API_BASE_URL}/api/subjects/${subjectId}/toggle-status`, {
         method: 'PATCH'
       });
 
@@ -452,7 +453,7 @@ const ManageSubjects = () => {
                       <div className="subject-info">
                         {subject.image ? (
                           <img 
-                            src={`http://localhost:5000/uploads/${subject.image}`}
+                            src={`${API_BASE_URL}/uploads/${subject.image}`}
                             alt={subject.name}
                             className="subject-image"
                           />

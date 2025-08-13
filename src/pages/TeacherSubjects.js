@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/teacherSubjects.css';
+import API_BASE_URL from '../../../tuition-backend/config/api';
 import { FaBook, FaLaptopCode, FaCalculator, FaPlay, FaStop, FaCircle, FaSpinner, FaExclamationTriangle, FaUserCheck, FaVideo, FaUsers } from 'react-icons/fa';
 import { useLiveClass } from '../contexts/LiveClassContext';
 import { generateRoomName, openJitsiInNewTab } from '../utils/jitsiUtils';
+import '../styles/teacherSubjects.css';
 
 // Image Imports (keep your existing imports)
 import Maths from '../assets/Maths.jpeg';
@@ -110,7 +111,7 @@ const TeacherSubjects = () => {
       try {
         console.log('Fetching subjects for teacher ID:', teacher.id);
 
-        const response = await fetch(`http://localhost:5000/api/teacher/subjects/${teacher.id}`);
+        const response = await fetch(`${API_BASE_URL}/api/teacher/subjects/${teacher.id}`);
         const data = await response.json();
 
         console.log('API Response:', data);
