@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import API_BASE_URL from '../../../tuition-backend/config/api';
+import API_BASE_URL from '../config/apiConfig';
 import '../styles/manageStudents.css';
 import { 
   FaUsers, 

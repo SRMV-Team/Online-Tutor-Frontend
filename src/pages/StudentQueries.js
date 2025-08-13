@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
-import API_BASE_URL from '../../../tuition-backend/config/api';
+import API_BASE_URL from '../config/apiConfig';
 import '../styles/teacherQueries.css';
 import {
   FaSearch,

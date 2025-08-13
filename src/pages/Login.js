@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import API_BASE_URL from '../../../tuition-backend/config/api';
+import API_BASE_URL from '../config/apiConfig';
 import '../styles/login.css';
 
 const Login = () => {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import axios from 'axios';
-import API_BASE_URL from '../../../tuition-backend/config/api';
+import API_BASE_URL from '../config/apiConfig';
 import TeacherAssignmentModal from '../components/TeacherAssignmentModal';
 import '../styles/manageTeachers.css';
 import { 

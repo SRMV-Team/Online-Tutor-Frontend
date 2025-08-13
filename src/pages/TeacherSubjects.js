@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import API_BASE_URL from '../../../tuition-backend/config/api';
+import API_BASE_URL from '../config/apiConfig';
 import { FaBook, FaLaptopCode, FaCalculator, FaPlay, FaStop, FaCircle, FaSpinner, FaExclamationTriangle, FaUserCheck, FaVideo, FaUsers } from 'react-icons/fa';
 import { useLiveClass } from '../contexts/LiveClassContext';
 import { generateRoomName, openJitsiInNewTab } from '../utils/jitsiUtils';

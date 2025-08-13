@@ -1,5 +1,5 @@
 import io from 'socket.io-client';
-import API_BASE_URL from '../../../tuition-backend/config/api';
+import API_BASE_URL from '../config/apiConfig';
 
 class SocketService {
   constructor() {

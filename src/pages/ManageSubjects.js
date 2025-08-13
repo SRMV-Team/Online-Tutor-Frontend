@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import API_BASE_URL from '../../../tuition-backend/config/api';
+import API_BASE_URL from '../config/apiConfig';
 import '../styles/manageSubjects.css';
 import { 
   FaPlus, 
