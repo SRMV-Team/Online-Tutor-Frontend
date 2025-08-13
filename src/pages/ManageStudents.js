@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import API_BASE_URL from '../config/apiConfig';
+import API_BASE_URL from '../config/api';
 import '../styles/manageStudents.css';
 import { 
   FaUsers, 

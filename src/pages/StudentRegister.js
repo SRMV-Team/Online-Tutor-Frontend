@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import API_BASE_URL from '../config/apiConfig';
+import API_BASE_URL from '../config/api';
 import '../styles/register.css';
 
 const StudentRegister = () => {

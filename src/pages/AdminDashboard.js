@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import API_BASE_URL from '../config/apiConfig';
+import API_BASE_URL from '../config/api';
 import '../styles/adminDashboard.css';
 import { 
   FaChalkboardTeacher, 

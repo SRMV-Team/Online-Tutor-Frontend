@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import API_BASE_URL from '../config/apiConfig';
+import API_BASE_URL from '../config/api';
 import '../styles/register.css';
 
 const AdminRegister = () => {
