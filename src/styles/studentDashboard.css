@@ -382,7 +382,13 @@
   .student-portal {
     padding: 16px;
   }
-  
+
+  .student-portal-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
   .student-portal-content-grid {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -394,14 +400,16 @@
     gap: 16px;
   }
   
-  .student-header-stats {
-    width: 100%;
-    justify-content: space-around;
-    gap: 12px;
-  }
-  
   .student-stats-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+}
+
+@media (max-width: 960px) {
+  .student-portal-header {
+    flex-direction: column;
+    align-items: center;
     gap: 16px;
   }
 }
@@ -413,10 +421,14 @@
   
   .student-portal-header {
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
   }
   
   .student-welcome-text h1 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
   
   .student-welcome-text p {
@@ -458,10 +470,11 @@
   
   .student-portal-header {
     padding: 16px;
+    text-align: center;
   }
   
   .student-welcome-text h1 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
   
   .student-welcome-text p {

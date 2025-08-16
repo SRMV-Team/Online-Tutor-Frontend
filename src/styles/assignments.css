@@ -433,10 +433,11 @@
   .assignment-controls {
     flex-direction: column;
     align-items: stretch;
+    gap: 1rem;
   }
 
   .assignment-controls__search {
-    min-width: unset;
+    max-width: 500px;
   }
 
   .assignment-controls__filters {
@@ -455,7 +456,11 @@
 
 @media (max-width: 480px) {
   .assignment-stats {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .assignment-controls__search {
+    max-width: 500px;
   }
 
   .assignment-controls__filters {

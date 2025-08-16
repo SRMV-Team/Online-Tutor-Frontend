@@ -242,7 +242,7 @@ const Subjects = () => {
                   ) : (
                     <button
                       className="student-subjects-details-btn-horizontal"
-                      onClick={() => handleViewDetails(subject)}
+                      // onClick={() => handleViewDetails(subject)}
                     >
                       <FaBook className="btn-icon" />
                       <span>View Details</span>

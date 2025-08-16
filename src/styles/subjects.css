@@ -498,26 +498,22 @@
 @media (max-width: 968px) {
   .student-subjects-card-horizontal {
     flex-direction: column;
-    min-height: auto;
+    height: 500px;
   }
   
   .student-subjects-image-section {
     width: 100%;
     height: 200px;
   }
-  
-  .student-subjects-content-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
+
+  .student-subjects-status-normal {
+    display: none;
   }
-  
-  .student-subjects-title-section {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
+
+  .status-text {
+    font-size: 0.6rem;
   }
-  
+
   .student-subjects-live-meta {
     grid-template-columns: 1fr;
     gap: 8px;
@@ -547,6 +543,11 @@
     flex-direction: column;
     gap: 16px;
     padding: 24px;
+    min-height: 0;
+  }
+
+  .student-subjects-live-title {
+    font-size: 1.2rem;
   }
 
   .student-subjects-welcome {
@@ -558,6 +559,10 @@
     gap: 16px;
   }
   
+  .student-subjects-status-normal {
+    display: none;
+  }
+
   .student-subjects-name-horizontal {
     font-size: 1.5rem;
   }
@@ -567,7 +572,7 @@
   }
   
   .feature-tag {
-    font-size: 0.75rem;
+    font-size: 0.58rem;
     padding: 4px 8px;
   }
 }
@@ -583,12 +588,21 @@
 
   .student-subjects-info-card {
     padding: 20px;
+    min-height: 0;
+  }
+
+  .student-subjects-live-title {
+    font-size: 1rem;
   }
   
   .student-subjects-content-section {
     padding: 16px;
   }
   
+  .student-subjects-status-normal {
+    display: none;
+  }
+
   .student-subjects-name-horizontal {
     font-size: 1.3rem;
   }
